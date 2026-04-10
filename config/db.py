@@ -1,6 +1,7 @@
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import declarative_base
+import models
 
 #engine = create_engine("postgresql://postgres+asyncpg:FkHecP0E7TzPllCb@db.yyuqbvoevfpbswnyxpoo.supabase.co:5432/postgres")
 
@@ -8,5 +9,3 @@ engine = create_async_engine("postgresql+asyncpg://postgress:pOakUYRGQYlMWx1H5JT
 
 Base = declarative_base()
 metadata = Base.metadata
-
-conn = engine.connect()
