@@ -22,11 +22,14 @@ app.include_router(router)
 @app.get('/')
 @authentication
 async def root():
+    return "Hello"
+
+@app.get('/db')
+async def db():
     async with SessionLocal() as session:
         result = await session.execute(select(models.User))
         tmp = result.scalars().all()
         print(tmp)
-    return "Hello"
 
 @app.get("/login")
 def login():    
