@@ -1,0 +1,13 @@
+fastapi
+sqlalchemy
+asyncpg
+pydantic
+python-jose
+bcrypt
+alembic
+pytest
+pytest-asyncio
+black
+pylint
+mypy
+psycopg2
