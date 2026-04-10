@@ -13,4 +13,4 @@ class User(Base):
     company = relationship("Company", back_populates="users")
 
     def __repr__(self):
-        pass
+        return f"<User {self.name}>"

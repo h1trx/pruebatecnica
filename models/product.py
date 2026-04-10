@@ -14,4 +14,4 @@ class Product(Base):
     company = relationship("Company", back_populates="products")
 
     def __repr__(self):
-        pass
+        return f"<Product {self.name}>"
