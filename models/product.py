@@ -13,3 +13,6 @@ class Products(Base):
     created_at = Column(DateTime, default=func.now())
     company = relationship("Company", back_populates="products")
     user = relationship("User")
+
+    def __repr__(self):
+        pass
