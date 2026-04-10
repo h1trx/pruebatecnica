@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from modules.authentication import authentication
 from routes.router import router
 from config.db import conn, engine
-from models.user import User
+import models
 from sqlalchemy import select
 from core.exceptions import (
     validation_exception_handler,
@@ -23,7 +23,7 @@ app.include_router(router)
 @authentication
 async def root():
     async with SessionLocal() as session:
-        result = await session.execute(select(User))
+        result = await session.execute(select(models.User))
         tmp = result.scalars().all()
         print(tmp)
     return "Hello"
