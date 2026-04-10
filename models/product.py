@@ -3,7 +3,7 @@ from sqlalchemy.sql.sqltypes import Integer, String, DateTime
 from sqlalchemy.orm import relationship
 from config.base import Base
 
-class Products(Base):
+class Product(Base):
     __tablename__ = "products"
 
     id = Column(Integer, primary_key=True)
@@ -12,7 +12,6 @@ class Products(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     created_at = Column(DateTime, default=func.now())
     company = relationship("Company", back_populates="products")
-    user = relationship("User")
 
     def __repr__(self):
         pass

@@ -1,3 +1,3 @@
 from .user import User
 from .company import Company
-from .product import Products
+from .product import Product
