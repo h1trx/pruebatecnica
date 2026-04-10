@@ -3,12 +3,18 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from modules.authentication import authentication
 from routes.router import router
-from modules.user import User
+from config.db import conn, engine
+from models.user import User
+from sqlalchemy import select
 from core.exceptions import (
     validation_exception_handler,
     http_exception_handler,
     general_exception_handler,
 )
+
+from sqlalchemy.ext.asyncio import async_sessionmaker
+
+SessionLocal = async_sessionmaker(engine, expire_on_commit=False)
 
 app = FastAPI()
 app.include_router(router)
@@ -16,9 +22,11 @@ app.include_router(router)
 @app.get('/')
 @authentication
 async def root():
-    #result = conn.execute(users.select().fetch())
-    print("Hello")
-    return "Root"
+    async with SessionLocal() as session:
+        result = await session.execute(select(User))
+        tmp = result.scalars().all()
+        print(tmp)
+    return "Hello"
 
 @app.get("/login")
 def login():    
