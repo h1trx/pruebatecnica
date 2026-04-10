@@ -1,10 +1,10 @@
+import models
 from fastapi import FastAPI, status, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from modules.authentication import authentication
 from routes.router import router
 from config.db import conn, engine
-import models
 from sqlalchemy import select
 from core.exceptions import (
     validation_exception_handler,
