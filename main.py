@@ -1,8 +1,6 @@
 from fastapi import FastAPI, status, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-#from config.db import conn
-#from models.user import users
 from modules.authentication import auththentication
 from routes.router import router
 from modules.user import User

@@ -1,10 +1,6 @@
 from sqlalchemy import Table, Column, func
 from sqlalchemy.sql.sqltypes import Integer, String, DateTime 
-from sqlalchemy.ext.declarative import declarative_base
-from config.db import meta, engine
-
-Base = declarative_base()
-metadata = Base.metadata
+from config.db import Base
 
 class Users(Base):
     __tablename_ = "users"
