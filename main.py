@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from modules.authentication import auththentication
+from modules.authentication import authentication
 from routes.router import router
 from modules.user import User
 from core.exceptions import (
@@ -14,7 +14,7 @@ app = FastAPI()
 app.include_router(router)
 
 @app.get('/')
-@auththentication
+@authentication
 async def root():
     #result = conn.execute(users.select().fetch())
     print("Hello")

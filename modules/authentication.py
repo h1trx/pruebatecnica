@@ -1,6 +1,6 @@
 from  functools import wraps
 
-def auththentication(func):
+def authentication(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         print("------------")
