@@ -4,7 +4,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from modules.authentication import authentication
 from routes.router import router
-from config.db import conn, engine
+from config.db import engine
+from config.base import Base
 from sqlalchemy import select
 from core.exceptions import (
     validation_exception_handler,
@@ -26,10 +27,8 @@ async def root():
 
 @app.get('/db')
 async def db():
-    async with SessionLocal() as session:
-        result = await session.execute(select(models.User))
-        tmp = result.scalars().all()
-        print(tmp)
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
 @app.get("/login")
 def login():    
